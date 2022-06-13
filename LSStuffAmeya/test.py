@@ -232,9 +232,9 @@ try:
         currentt=int(datetime.utcnow().timestamp()*1e6) - firstt
         #print(currentt)
         
-        #print(ADC_Value[0])
+        print(ADC_Value[0])
 
-        f.write("\n"+str(currentt)+ "," + str(ADC_Value[0])+ "," + str(ADC_Value[1])+ "," + str(ADC_Value[2])+ "," + str(ADC_Value[3]))
+        f.write("\n"+str(currentt)+ "," + str(ADC_Value[0]))#+ "," + str(ADC_Value[1])+ "," + str(ADC_Value[2])+ "," + str(ADC_Value[3]))
         f.flush()
         os.fsync(f)
 
