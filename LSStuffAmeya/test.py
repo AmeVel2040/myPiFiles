@@ -161,7 +161,7 @@ class ADS1256:
         else:
             print("ID Read failed   ")
             return -1
-        self.ADS1256_ConfigADC(ADS1256_GAIN_E['ADS1256_GAIN_1'], ADS1256_DRATE_E['ADS1256_30000SPS'])
+        self.ADS1256_ConfigADC(ADS1256_GAIN_E['ADS1256_GAIN_1'], ADS1256_DRATE_E['ADS1256_2000SPS'])
         return 0
     
     
@@ -230,10 +230,9 @@ try:
     while(1):
         ADC_Value = ADC.ADS1256_GetAll()
         currentt=int(datetime.utcnow().timestamp()*1e6) - firstt
-        #print(currentt)
+        #print(currentt/1e6)
+        #print(ADC_Value[0])
         
-        print(ADC_Value[0])
-
         f.write("\n"+str(currentt)+ "," + str(ADC_Value[0]))#+ "," + str(ADC_Value[1])+ "," + str(ADC_Value[2])+ "," + str(ADC_Value[3]))
         f.flush()
         os.fsync(f)
