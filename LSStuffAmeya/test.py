@@ -161,7 +161,7 @@ class ADS1256:
         else:
             print("ID Read failed   ")
             return -1
-        self.ADS1256_ConfigADC(ADS1256_GAIN_E['ADS1256_GAIN_1'], ADS1256_DRATE_E['ADS1256_15000SPS'])
+        self.ADS1256_ConfigADC(ADS1256_GAIN_E['ADS1256_GAIN_1'], ADS1256_DRATE_E['ADS1256_60SPS'])
         return 0
     
     
@@ -225,14 +225,14 @@ try:
     firstt=int(datetime.utcnow().timestamp()*1e6)
     
     init_file()
-    #f.write("Gain: 1, DRate: 60")
+    f.write("Gain: 1, DRate: 60")
     f.write(str(firstt) + ",d0" + "," + "d1"+ "," + "d2"+ "," + "d3")
     
     while(1):
         ADC_Value = ADC.ADS1256_GetAll()
         currentt=int(datetime.utcnow().timestamp()*1e6) - firstt
         #print(currentt/1e6)
-        print(ADC_Value[0])
+        #print(ADC_Value[0])
         
         f.write("\n"+str(currentt)+ "," + str(ADC_Value[0]))#+ "," + str(ADC_Value[1])+ "," + str(ADC_Value[2])+ "," + str(ADC_Value[3]))
         f.flush()
